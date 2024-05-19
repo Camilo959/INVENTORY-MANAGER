@@ -1,0 +1,35 @@
+name: SonarQube analysis
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  pull-requests: read # allows SonarQube to decorate PRs with analysis results
+
+jobs:
+  Analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      
+      - uses: actions/checkout@v4
+        with:
+            fetch-depth: 0
+            
+      - name: Analyze with SonarQube
+
+
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+
+          args:
+            -Dsonar.organization=camilo959
+            -Dsonar.projectKey=INVENTORY-MANAGER
+            -Dsonar.python.coverage.reportPaths=coverage.xml
