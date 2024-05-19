@@ -31,5 +31,4 @@ jobs:
 
           args:
             -Dsonar.organization=camilo959
-            -Dsonar.projectKey=INVENTORY-MANAGER
             -Dsonar.python.coverage.reportPaths=coverage.xml
