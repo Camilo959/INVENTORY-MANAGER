@@ -1,6 +1,7 @@
 import os, ssl
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
+import environ
 
 # Deshabilitar la verificación SSL
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -8,21 +9,23 @@ ssl._create_default_https_context = ssl._create_unverified_context
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+env = environ.Env( 
+    DEBUG=(bool, False)
+)
+#Leer archivo env
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-g8&627w5bdqxow+sg)g7-@d4_bqi17y+7=_0gn+yd%e02ag)%="
-
+SECRET_KEY = env('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DJANGO_DEBUG')
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1']
 
-
+                     
 # Application definition
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -85,11 +88,11 @@ WSGI_APPLICATION = "App.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": 'django.db.backends.postgresql',
-        "HOST": 'db',
-        "PORT": '5432',
-        "NAME": 'automanager',
-        "USER": 'adminAuto',
-        "PASSWORD": '12345678',
+        "HOST": env('DATABASE_HOST'),
+        "PORT": env('DATABASE_PORT'),
+        "NAME": env('DATABASE_NAME'),
+        "USER": env('DATABASE_USER'),
+        "PASSWORD": env('DATABASE_PASSWORD'),
     }
 }
 
