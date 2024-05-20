@@ -1,14 +1,14 @@
 // dashboard.js
 document.addEventListener('DOMContentLoaded', function () {
-    var ctx = document.getElementById('myChart').getContext('2d');
+    let ctx = document.getElementById('myChart').getContext('2d');
 
     // Retrieve data from data attributes
-    var usersCount = document.getElementById('myChart').dataset.usersCount;
-    var branchesCount = document.getElementById('myChart').dataset.branchesCount;
-    var productsCount = document.getElementById('myChart').dataset.productsCount;
-    var ordersCount = document.getElementById('myChart').dataset.ordersCount;
+    let usersCount = document.getElementById('myChart').dataset.usersCount;
+    let branchesCount = document.getElementById('myChart').dataset.branchesCount;
+    let productsCount = document.getElementById('myChart').dataset.productsCount;
+    let ordersCount = document.getElementById('myChart').dataset.ordersCount;
 
-    var chartData = {
+    let chartData = {
         labels: ["Users", "Branches", "Products", "Ordenes"],
         datasets: [{
             label: 'Detalles',
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }]
     };
 
-    var myChart = new Chart(ctx, {
+    let myChart = new Chart(ctx, {
         type: 'bar',
         data: chartData,
         options: {
@@ -45,16 +45,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // dashboard.js
 document.addEventListener('DOMContentLoaded', function () {
-    var pieCtx = document.getElementById('pieChart').getContext('2d');
+    let pieCtx = document.getElementById('pieChart').getContext('2d');
 
     // Retrieve data from data attributes
-    var usersCount = document.getElementById('pieChart').dataset.usersCount;
-    var branchesCount = document.getElementById('pieChart').dataset.branchesCount;
-    var productsCount = document.getElementById('pieChart').dataset.productsCount;
-    var ordersCount = document.getElementById('pieChart').dataset.ordersCount;
+    let usersCount = document.getElementById('pieChart').dataset.usersCount;
+    let branchesCount = document.getElementById('pieChart').dataset.branchesCount;
+    let productsCount = document.getElementById('pieChart').dataset.productsCount;
+    let ordersCount = document.getElementById('pieChart').dataset.ordersCount;
 
 
-    var pieChartData = {
+    let pieChartData = {
         labels: ["Users", "Branches", "Products", "Orders"],
         datasets: [{
             data: [usersCount, branchesCount, productsCount, ordersCount],
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }]
     };
 
-    var pieChart = new Chart(pieCtx, {
+    let pieChart = new Chart(pieCtx, {
         type: 'pie',
         data: pieChartData,
         options: {
@@ -105,14 +105,14 @@ document.addEventListener('DOMContentLoaded', function () {
 /*
 // dashboard.js
 document.addEventListener('DOMContentLoaded', function () {
-    var lineCtx = document.getElementById('lineChart').getContext('2d');
+    let lineCtx = document.getElementById('lineChart').getContext('2d');
 
     // Retrieve data from data attributes
-    var usersCount = document.getElementById('lineChart').dataset.usersCount;
-    var branchesCount = document.getElementById('lineChart').dataset.branchesCount;
-    var productsCount = document.getElementById('lineChart').dataset.productsCount;
+    let usersCount = document.getElementById('lineChart').dataset.usersCount;
+    let branchesCount = document.getElementById('lineChart').dataset.branchesCount;
+    let productsCount = document.getElementById('lineChart').dataset.productsCount;
 
-    var lineChartData = {
+    let lineChartData = {
         labels: ["Users", "Branches", "Products"],
         datasets: [{
             label: 'Counts',
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }]
     };
 
-    var lineChart = new Chart(lineCtx, {
+    let lineChart = new Chart(lineCtx, {
         type: 'line',
         data: lineChartData,
         options: {

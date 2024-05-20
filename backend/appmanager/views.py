@@ -540,17 +540,6 @@ def delete_Sucursal(request):
     return redirect( 'sucursales' ) 
 
 
-def create_Cargo(request):
-    new_cargo = Cargo(
-                        cargo_nombre = request.POST['cargo_nombre'],
-                        cargo_descripcion = request.POST['cargo_descripcion'],
-                        cargo_vigente = True
-                    )
-    new_cargo.save()
-
-    return redirect('/rutapordefinir/') #añadr la ruta donde se vaya a redirigir
-
-
 def create_vehiculoVenta(request):
     if request.method == 'POST':
         form = VehiculoVentaForm(request.POST)
@@ -709,65 +698,10 @@ def delete_CotizacionReparacion(request):
     return redirect( 'cotizaciones' ) 
 
 
-def create_RepuestoVenta(request):
-    new_repuestoventa = RepuestoVenta(
-                                        cotrepues_repuestocod = request.POST['cotrepues_repuesto'],
-                                        cotrepues_preciotemporal = request.POST['preciotemporal'],
-                                        cotrepues_fecharealizada = request.POST['cotrepues_fecharealizada'],
-                                        cotrepues_estado = request.POST['cotrepues_estado'],
-                                        cotrepues_vigente = True
-                                    )
-    new_repuestoventa.save()
-
-    return redirect('/rutapordefinir/') #añadr la ruta donde se vaya a redirigir
-
-
-def create_CotizacionVehiculo(request):
-    new_cotizacionvehiculo = CotizacionVehiculo(
-                                                    cotven_cod_vehiculo_nuevo = request.POST['cotven_vehiculonuevo'],
-                                                    cotven_fecharealizada = request.POST['cotven_fecharealizada'],
-                                                    cotven_estado = request.POST['cotven_estado'],
-                                                    cotven_vigente = True
-                                                )
-    new_cotizacionvehiculo.save()
-
-    return redirect('/rutapordefinir/') #añadr la ruta donde se vaya a redirigir
-
-
-def create_Factura(request):
-    new_factura = Factura(
-                            codfac_cliente = request.POST['cliente'],
-                            codfac_vendedor = request.POST['vendedor'],
-                            codfac_cotizacion_vehiculonuevo = request.POST['cod_cotizacion_vehiculonuevo'],
-                            codfac_reparacion = request.POST['cod_reparacion'],
-                            codfac_repuestos = request.POST['cod_repuestos'],
-                            codfac_subtotal = request.POST['subtotal'],
-                            codfac_iva = request.POST['iva'],
-                            codfac_descuento = request.POST['descuento'],
-                            codfac_precioTotal = request.POST['precioTotal'],
-                            codfac_fecharealizada = request.POST['codfac_fecharealizada'],
-                            codfac_vigente = True
-                        )
-    new_factura.save()
-
-    return redirect('/rutapordefinir/') #añadr la ruta donde se vaya a redirigir
-
-
 #FIN SECCION DE INSERCIONES
 
 #SECCION DE BORRADOS EN LAS TABLAS DE LA BD
-def delete_Cargo(request, cargo_id):
-    cargo = Cargo.objects.get( cargo_cod = cargo_id)
-    cargo.delete()
 
-    return redirect('/rutapordefinir/') #añadr la ruta donde se vaya a redirigir
-
-
-def delete_PersonaxCargo(request, personaxcarg_id):
-    personaxcargo = PersonaXCargo.objects.get( perxcargo_cod = personaxcarg_id)
-    personaxcargo.delete()
-
-    return redirect('/rutapordefinir/') #añadr la ruta donde se vaya a redirigir
 
 
 def delete_vehiculoventa(request):
@@ -781,12 +715,6 @@ def delete_vehiculoventa(request):
 
     return redirect( 'vehicle_inventory' )
 
-
-def delete_VehiculoReparacion(request, vehiculoreparacion_id):
-    vehiculoreparacion = VehiculoReparacion.objects.get( vehrep_cod = vehiculoreparacion_id)
-    vehiculoreparacion.delete()
-
-    return redirect('/rutapordefinir/') #añadr la ruta donde se vaya a redirigir
 
 
 def delete_order(request):
@@ -812,33 +740,6 @@ def delete_product(request):
 
     return redirect( 'inventory' )
 
-
-def delete_InventarioPorSucursal(request, inventarioSurcursal_id):
-    inventarioporsucursal = InventarioPorSucursal.objects.get( invsus_cod = inventarioSurcursal_id)
-    inventarioporsucursal.delete()
-
-    return redirect('/rutapordefinir/') #añadr la ruta donde se vaya a redirigir
-
-
-def delete_RepuestoVenta(request, repuestoventa_id):
-    repuestoventa = RepuestoVenta.objects.get( repvnt_cod = repuestoventa_id)
-    repuestoventa.delete()
-
-    return redirect('/rutapordefinir/') #añadr la ruta donde se vaya a redirigir
-
-
-def delete_CotizacionVehiculo(request, cotizacionvehiculo_id):
-    cotizacionvehiculo = CotizacionVehiculo.objects.get( cotven_cod = cotizacionvehiculo_id)
-    cotizacionvehiculo.delete()
-
-    return redirect('/rutapordefinir/') #añadr la ruta donde se vaya a redirigir
-
-
-def delete_Factura(request, fac_id):
-    factura = Factura.objects.get( codfac = fac_id)
-    factura.delete()
-
-    return redirect('/rutapordefinir/') #añadr la ruta donde se vaya a redirigir
 
 #FIN SECCION BORRADOS
 
